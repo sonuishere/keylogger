@@ -1,2 +1,89 @@
-# keylogger
-This is a simple  python-based keylogger designed to demonstrate keyboard event handling,
+# Keylogger.py - Educational Python Keylogger
+
+![Python](https://img.shields.io/badge/Python-3.6%2B-blue.svg) ![License](https://img.shields.io/badge/License-MIT-green.svg) ![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-orange.svg)
+
+## 📝 Overview
+This is a simple, educational Python-based keylogger designed to demonstrate keyboard event handling, clipboard monitoring, and logging mechanics. It captures keystrokes, groups them into words, handles special keys, and detects copy/cut/paste operations via keyboard shortcuts. **⚠️ Warning: This tool is for learning purposes only. Using it to monitor others without explicit consent is unethical, illegal in many jurisdictions, and could violate privacy laws (e.g., India's IT Act 2000). Always test on your own system and delete logs afterward.**
+
+The script uses `pynput` for input listening and `tkinter` for clipboard access, making it cross-platform but with OS-specific setup needs.
+
+## ✨ Features
+- 🔤 **Keystroke Grouping**: Aggregates printable characters into words (e.g., "hello" instead of individual letters).
+- 📋 **Clipboard Capture**: Detects and logs copy (Ctrl/Cmd+C), cut (Ctrl/Cmd+X), and paste (Ctrl/Cmd+V) with content (e.g., "[paste: some text]").
+- ⏰ **Timestamped Logs**: Each entry includes a date-time stamp for tracking.
+- 🔑 **Special Key Handling**: Logs keys like [space], [enter], [shift], etc., with basic backspace support.
+- 🛑 **Graceful Exit**: Stops logging on Esc key press.
+- 📂 **Append-Only Logging**: Writes to `keylog.txt` without overwriting existing data.
+- 🧵 **Threaded Execution**: Handles Tkinter and listener in separate threads to avoid main thread errors.
+
+## 🛠️ Requirements
+- **Python**: 3.6 or higher.
+- **Libraries**:
+  - `pynput`: Install via `pip install pynput`.
+  - `tkinter`: Usually bundled; on Linux, install with `sudo apt install python3-tk` (or equivalent).
+- **Permissions**:
+  - Windows: Run as admin for global capture.
+  - Linux: May need `sudo` for system-wide hooks; ensure X11/Wayland compatibility.
+  - macOS: Grant Accessibility permissions in System Settings.
+- **Hardware**: Standard keyboard; tested on desktops/laptops (e.g., Parrot OS on Raspberry Pi).
+
+## 🚀 Installation
+1. Clone or download the repository:
+   ```
+   git clone https://github.com/yourusername/keylogger-py.git
+   cd keylogger-py
+   ```
+2. Set up a virtual environment (recommended):
+   ```
+   python3 -m venv venv
+   source venv/bin/activate  # On Linux/macOS
+   ```
+3. Install dependencies:
+   ```
+   pip install pynput
+   ```
+   (For Linux, also: `sudo apt install python3-tk` if needed.)
+
+## 📖 Usage
+1. Save the script as `keylogger.py`.
+2. Run it:
+   ```
+   python3 keylogger.py
+   ```
+3. Type, copy/paste, etc., in any window—the script captures while running.
+4. Press **Esc** to stop.
+5. View logs in `keylog.txt` (appends new sessions).
+
+**Example Log Output:**
+```
+2026-02-15 11:00:00 - hello
+2026-02-15 11:00:05 - [space]
+2026-02-15 11:00:10 - world
+2026-02-15 11:00:15 - [copy: world]
+2026-02-15 11:00:20 - [paste: world]
+2026-02-15 11:00:25 - [enter]
+```
+
+## ⚙️ How It Works
+- **Event Listening**: Uses `pynput.keyboard.Listener` to hook key presses/releases.
+- **Buffering**: Accumulates chars into a word buffer, flushed on special keys.
+- **Clipboard Integration**: Detects modifiers + C/V/X, reads clipboard via Tkinter (thread-safe).
+- **Error Handling**: Catches exceptions; debug prints for issues.
+
+## ⚠️ Limitations and Warnings
+- **Not Stealthy**: Visible in task manager/terminal; not hidden or persistent.
+- **Incomplete Capture**: Misses mouse-based copy/paste, secure fields (e.g., passwords), or non-keyboard inputs.
+- **Platform Quirks**: On Linux (e.g., Parrot OS), may need tweaks for Wayland; clipboard delays could vary.
+- **Ethical Concerns**: This isn't a production tool—it's educational. I challenge the assumption that building keyloggers is harmless; it can lead to misuse. Use responsibly, or better yet, explore ethical alternatives like input simulators for testing.
+- **Security Risks**: Antivirus may flag it; running could expose your own data if mishandled.
+- **No Encryption**: Logs are plain text—add your own if needed.
+
+## 🤝 Contributing
+Feel free to fork and submit PRs for improvements (e.g., better backspace handling). Keep it educational!
+
+## 📄 License
+MIT License - See [LICENSE](LICENSE) file for details.
+
+---
+
+*Generated for educational demo. Customize as needed.*
