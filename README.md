@@ -30,7 +30,7 @@ The script uses `pynput` for input listening and `tkinter` for clipboard access,
 ## 🚀 Installation
 1. Clone or download the repository:
 2. git clone https://github.com/sonuishere/keylogger.git
-cd keylogger
+3. cd keylogger
 2. Set up a virtual environment (recommended for all OS):
 3. python -m venv venv  # Or python3 on Linux/macOS
 4. - Activate:
