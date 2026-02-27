@@ -1,4 +1,4 @@
-# Keylogger.py
+# Keylogger
 Educational Python Keyboard Event Logger
 
 Python 3.6+ | MIT License | Windows | Linux | macOS
